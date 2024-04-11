@@ -20,18 +20,18 @@ VegaSynth is a small synthesizer for Tiny Tapeout. Here are the specs:
 
 ## How to test
 
-VegaSynth accepts commands to set these settings (where n is the channel number):
-- n2: Pitch A LSB
-- n3: Pitch A HSB
-- n4: Wave A
-- n5: Osc A/B combine mode and sync
-- n6: Panning
-- n7: Volume
-- nA: Pitch B LSB
-- nB: Pitch B HSB
-- nC: Wave B
-- nE: Slew rate up
-- nF: Slew rate down
+VegaSynth accepts 16-bit commands to set these settings (where n is the channel number and vv is the value):
+- n2vv: Pitch A LSB
+- n3vv: Pitch A HSB
+- n4vv: Wave A
+- n5vv: Osc A/B combine mode and sync
+- n6vv: Slew rate up
+- n7vv: Slew rate down
+- n8vv: Volume
+- n9vv: Panning
+- nAvv: Pitch B LSB
+- nBvv: Pitch B HSB
+- nCvv: Wave B
 
 ## External hardware
 
