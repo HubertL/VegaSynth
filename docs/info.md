@@ -9,29 +9,29 @@ You can also include images in this folder and reference them in the markdown. E
 
 ## How it works
 
-VegaSynth is a small synthesizer for Tiny Tapeout. The design goals are as follows:
-- 4+ channels
-- In tune over 32Hz to 2kHz
+VegaSynth is a small synthesizer for Tiny Tapeout. Here are the specs:
+- 8 channels
+- Each channel contains 2 pulse wave / noise oscillators
+- Selectable oscillator combination
+- Osc sync
 - Volume control
-- Brightness control
-- Multiple waves (saw, square, noise...)
-- Detune or PWM effect
-- Simple stereo
-
-Due to the small number of cells available, this requires a special design.
+- Slew rate limiter (controls brightness); separate rate for up/down allows for saw waves
+- Simple stereo (left/mid/right)
 
 ## How to test
 
-VegaSynth accepts commands in the form of extremely basic MIDI:
-- 8n xx yy: Turn off channel n. (xx must match current note)
-- 9n xx yy: Turn on channel n (if off) and update its note to xx and its volume to yy. (both 0..127)
-- Bn 07 yy: Set channel n volume. (0..127; this overwrites velocity)
-- Bn 0A yy: Set channel n pan. (0..127; 8 values, low 4 bits ignored)
-- Bn 4A yy: Set channel n brightness. (0..127)
-- Bn 5E yy: Set channel n detune/PWM effect depth. (0..127)
-- Bn 7B yy: Turn off channel n. (MIDI all notes off)
-- Cn xx: Set channel n waveform.
-- En xx yy: Pitch bend channel n by yy. (0..127 = -2 to +1.96875 semitones, LSB ignored)
+VegaSynth accepts commands to set these settings (where n is the channel number):
+- n2: Pitch A LSB
+- n3: Pitch A HSB
+- n4: Wave A
+- n5: Osc A/B combine mode and sync
+- n6: Panning
+- n7: Volume
+- nA: Pitch B LSB
+- nB: Pitch B HSB
+- nC: Wave B
+- nE: Slew rate up
+- nF: Slew rate down
 
 ## External hardware
 
